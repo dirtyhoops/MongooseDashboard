@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mongoose Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Welcome to Mongooses Page</h1>
+        <div class="tablediv">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i in themongooses){ %>
+                    <tr>
+                        <td><p><%= themongooses[i].name %></p></td>
+                        <td><p><%= themongooses[i].age %></p></td>
+                        <td><a href="/monkey/<%= themongooses[i]._id %>">Show</a> | <a href="/monkey/edit/<%= themongooses[i]._id %>">Edit</a> <form action="/monkey/destroy/<%= themongooses[i]._id %>" method="post"><button>Delete</button></form>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    
+    <div class="centerdiv">
+        <a href="/monkey/new">Add new Mongoose</a>
+    </div>
+</body>
+</html>
